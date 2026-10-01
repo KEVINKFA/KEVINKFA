@@ -201,6 +201,7 @@ button { font: inherit; color: inherit; }
   border-bottom: 4px solid var(--acento);
   transition: opacity .25s, transform .25s;
 }
+.junto { white-space: nowrap; }
 .giro.sai { opacity: 0; transform: translateY(-10px); }
 .heroi__resumo { margin-top: 18px; max-width: 520px; color: var(--tinta-2); font-size: 18px; }
 .heroi__botoes { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
