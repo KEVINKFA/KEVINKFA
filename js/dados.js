@@ -2,122 +2,94 @@
 
 export const perfil = {
   nome: 'Kevin Alves',
+  cargo: 'Operação e vendas em marketplace',
   cidade: 'São Paulo, SP',
   email: 'kevinalves180801@gmail.com',
   linkedin: 'https://www.linkedin.com/in/kevin-alves-a61907234/',
   faturado: 200000,
-  // Palavras que giram no título: "Eu faço produto ___."
-  verbos: ['vender', 'aparecer na busca', 'chegar no prazo', 'virar 5 estrelas', 'vender de novo'],
+  // Título de abertura, uma linha por item. A última fica em destaque.
+  chamada: ["Transformo anúncios em vendas,", "e vendas em clientes", "que voltam."],
   resumo:
-    'Vendedor de marketplace e estudante de Publicidade e Propaganda. Junto anúncio que convence, operação que não trava e atendimento que vira avaliação positiva.',
+    'Vendedor no Mercado Livre e estudante de Publicidade e Propaganda. Uno comunicação, logística e tecnologia para cuidar da operação inteira: do anúncio que aparece na busca até o pós-venda.',
 };
 
 export const numeros = [
-  { valor: 'R$ 200 mil', texto: 'faturados no Mercado Livre' },
-  { valor: '2022', texto: 'começo na logística e no atendimento' },
-  { valor: '2027', texto: 'formatura em Publicidade e Propaganda' },
+  { valor: '2022', texto: 'Início na logística e no atendimento' },
+  { valor: '3 áreas', texto: 'Publicidade, logística e TI' },
+  { valor: '2027', texto: 'Formatura em Publicidade e Propaganda' },
 ];
 
-// Faixa que corre abaixo do topo
-export const faixa = [
-  'Título que aparece na busca',
-  'Foto que para o scroll',
-  'Preço com margem',
-  'Envio no prazo',
-  'Resposta rápida',
-  'Pós-venda que fideliza',
-  'Reputação no verde',
+// Etapas do ciclo da venda. Cada serviço aponta para uma delas.
+export const etapas = [
+  { id: 'visibilidade', nome: 'Visibilidade', texto: 'O cliente encontra o produto.' },
+  { id: 'conversao', nome: 'Conversão', texto: 'A visita vira compra.' },
+  { id: 'entrega', nome: 'Entrega', texto: 'O pedido chega certo e no prazo.' },
+  { id: 'recompra', nome: 'Recompra', texto: 'O cliente avalia bem e volta.' },
 ];
 
-// Cada serviço vira um "anúncio" na vitrine e pode ir para o carrinho de contato
 export const servicos = [
   {
-    id: 'anuncios',
-    icone: '📸',
-    selo: 'Mais pedido',
-    titulo: 'Anúncios que vendem',
-    texto: 'Título, fotos, descrição e ficha técnica tratados como peça publicitária, não como formulário.',
-    itens: ['Título com as palavras que o cliente busca', 'Sequência de fotos que responde dúvidas', 'Descrição clara, com os benefícios na frente'],
-    tags: ['Copywriting', 'SEO de marketplace', 'Fotos'],
+    etapa: 'visibilidade',
+    titulo: 'Anúncios e posicionamento',
+    texto: 'Título, fotos, descrição e ficha técnica pensados como peça publicitária, com as palavras que o cliente usa na busca.',
+    itens: ['Títulos orientados à busca', 'Sequência de fotos que responde dúvidas', 'Descrições com os benefícios na frente'],
   },
   {
-    id: 'preco',
-    icone: '💰',
-    titulo: 'Preço e margem',
-    texto: 'Antes de baixar o preço, conta feita: tarifa, frete, imposto e quanto sobra de verdade.',
-    itens: ['Cálculo de tarifa e frete por anúncio', 'Promoções e kits sem queimar margem', 'Acompanhamento da concorrência'],
-    tags: ['Precificação', 'Promoções'],
-  },
-  {
-    id: 'logistica',
-    icone: '📦',
-    selo: 'Experiência real',
-    titulo: 'Estoque e envio',
-    texto: 'Dois anos de triagem, registro e postagem na Pitney Bowes: pacote conferido sai certo e no prazo.',
-    itens: ['Conferência de estoque e inventário', 'Separação, embalagem e postagem', 'Relatórios de movimentação'],
-    tags: ['Expedição', 'Inventário'],
-  },
-  {
-    id: 'atendimento',
-    icone: '💬',
-    titulo: 'Atendimento e pós-venda',
-    texto: 'Pergunta respondida rápido e problema resolvido antes de virar reclamação ou nota baixa.',
-    itens: ['Respostas rápidas na pré-venda', 'Mediação de trocas e devoluções', 'Cuidado com a reputação da conta'],
-    tags: ['Atendimento', 'Reputação'],
-  },
-  {
-    id: 'metricas',
-    icone: '📈',
+    etapa: 'visibilidade',
     titulo: 'Divulgação e métricas',
-    texto: 'Publicidade aplicada ao marketplace: visitas, conversão e campanhas olhando o que dá retorno.',
-    itens: ['Leitura de visitas e conversão', 'Anúncios patrocinados', 'Campanhas para datas comerciais'],
-    tags: ['Marketing', 'Product Ads'],
+    texto: 'Leitura de visitas e conversão para decidir onde investir, com campanhas para datas comerciais.',
+    itens: ['Acompanhamento de visitas e conversão', 'Anúncios patrocinados', 'Calendário de datas comerciais'],
   },
   {
-    id: 'operacao',
-    icone: '🛠️',
-    titulo: 'Operação sem travar',
-    texto: 'Bagagem de TI: computador, impressora de etiqueta e planilha funcionando no dia de pico.',
-    itens: ['Suporte a Windows e MacBook', 'Planilhas e Pacote Office', 'Equipamentos sempre prontos'],
-    tags: ['Suporte de TI', 'Office'],
+    etapa: 'conversao',
+    titulo: 'Preço e margem',
+    texto: 'Tarifa, frete e imposto na conta antes de mexer no preço. Promoções e kits que vendem sem consumir a margem.',
+    itens: ['Cálculo de custo por anúncio', 'Promoções e kits', 'Acompanhamento da concorrência'],
+  },
+  {
+    etapa: 'entrega',
+    titulo: 'Estoque e expedição',
+    texto: 'Dois anos de logística na Pitney Bowes: triagem, registro, inventário e postagem com controle.',
+    itens: ['Conferência de estoque e inventário', 'Separação, embalagem e postagem', 'Relatórios de movimentação'],
+  },
+  {
+    etapa: 'entrega',
+    titulo: 'Infraestrutura da operação',
+    texto: 'Experiência em suporte de TI para manter computadores, impressoras e planilhas funcionando no dia de pico.',
+    itens: ['Suporte a Windows e macOS', 'Pacote Office e planilhas', 'Equipamentos prontos para a operação'],
+  },
+  {
+    etapa: 'recompra',
+    titulo: 'Atendimento e reputação',
+    texto: 'Perguntas respondidas rápido e problemas resolvidos antes de virar reclamação ou avaliação negativa.',
+    itens: ['Respostas rápidas na pré-venda', 'Mediação de trocas e devoluções', 'Cuidado com a reputação da conta'],
   },
 ];
 
-// Carreira em formato de rastreio: do mais recente para o mais antigo
-export const rastreio = [
+// Do mais recente para o mais antigo
+export const trajetoria = [
   {
-    status: 'Saiu para entrega',
-    quando: 'Hoje',
-    titulo: 'Vendedor no Mercado Livre',
-    local: 'São Paulo, SP',
-    texto: 'Operação própria de marketplace com R$ 200 mil faturados: anúncios, preço, envio e atendimento.',
-    atual: true,
+    periodo: 'Atual',
+    titulo: 'Vendedor',
+    empresa: 'Mercado Livre · operação própria',
+    texto: 'R$ 200 mil faturados cuidando de anúncios, preço, envio e atendimento.',
   },
   {
-    status: 'Em trânsito',
-    quando: '2024 – 2027',
-    titulo: 'Publicidade e Propaganda',
-    local: 'Estácio · São Caetano do Sul',
-    texto: 'Graduação em andamento. Comunicação, criação e estratégia, aplicadas direto nos anúncios.',
-  },
-  {
-    status: 'Objeto em transferência',
-    quando: '2024 – 2025',
-    titulo: 'Assistente de TI · SUBA',
-    local: 'São Paulo, SP',
+    periodo: '2024 — 2025',
+    titulo: 'Assistente de TI',
+    empresa: 'SUBA',
     texto: 'Suporte técnico e apoio à gestão de TI.',
     itens: [
       'Formatação, configuração, manutenção e upgrade de equipamentos Windows e MacBook',
-      'Compra, troca e atualização de equipamentos da equipe',
+      'Compra, substituição e atualização de equipamentos da equipe',
       'Suporte de primeira linha aos colaboradores',
       'Organização e suporte técnico em reuniões e eventos internos',
     ],
   },
   {
-    status: 'Objeto postado',
-    quando: '2022 – 2024',
-    titulo: 'Mensageiro · Pitney Bowes',
-    local: 'São Paulo, SP',
+    periodo: '2022 — 2024',
+    titulo: 'Mensageiro',
+    empresa: 'Pitney Bowes',
     texto: 'Logística de correspondências e documentos, do recebimento à entrega.',
     itens: [
       'Recebimento, atendimento ao cliente, triagem, entrega e registro',
@@ -126,41 +98,20 @@ export const rastreio = [
       'Relatórios de movimentação e controle de postagens',
     ],
   },
-  {
-    status: 'Etiqueta gerada',
-    quando: '2019',
-    titulo: 'Ensino médio',
-    local: 'E.E. Dr. Francisco Borges Vieira',
-    texto: 'Concluído.',
-  },
 ];
 
-// Formação e certificados no "cupom"
-export const cupom = [
-  { item: 'Publicidade e Propaganda', origem: 'Estácio', quando: '2024–27', situacao: 'Cursando' },
-  { item: 'Fundamentos de Marketing', origem: 'LinkedIn', quando: '2023', situacao: 'OK' },
-  { item: 'Pacote Office Intermediário', origem: 'LinkedIn', quando: '', situacao: 'OK' },
-  { item: 'Redes de Computadores', origem: 'Curso em Vídeo', quando: '2023', situacao: 'OK' },
-  { item: 'Hardware', origem: 'Curso em Vídeo', quando: '2022', situacao: 'OK' },
-  { item: 'PHP', origem: 'Curso em Vídeo', quando: '2022', situacao: 'OK' },
-];
+export const formacao = {
+  curso: 'Publicidade e Propaganda',
+  instituicao: 'Estácio · São Caetano do Sul',
+  periodo: '2024 — 2027',
+  situacao: 'Em andamento',
+  certificados: [
+    { nome: 'Fundamentos de Marketing', origem: 'LinkedIn', ano: '2023' },
+    { nome: 'Pacote Office Intermediário', origem: 'LinkedIn', ano: '' },
+    { nome: 'Redes de Computadores', origem: 'Curso em Vídeo', ano: '2023' },
+    { nome: 'Hardware', origem: 'Curso em Vídeo', ano: '2022' },
+    { nome: 'PHP', origem: 'Curso em Vídeo', ano: '2022' },
+  ],
+};
 
-// "Ficha técnica" no estilo de página de produto
-export const ficha = [
-  ['Nome', 'Kevin Alves'],
-  ['Local', 'São Paulo, SP'],
-  ['Foco', 'Marketplace e Mercado Livre'],
-  ['Base', 'Publicidade, logística e TI'],
-  ['Perfil', 'Comunicativo, extrovertido e prestativo'],
-  ['Ponto forte', 'Lidar com cliente e com equipe'],
-  ['Ferramentas', 'Pacote Office, Windows e macOS'],
-];
-
-// Dicas que aparecem como notificação no canto da tela
-export const dicas = [
-  'Título bom começa pelo que o cliente digita na busca.',
-  'A primeira foto decide o clique. As outras decidem a compra.',
-  'Pergunta respondida em minutos vende mais que desconto.',
-  'Preço baixo sem conta feita é prejuízo com frete grátis.',
-  'Avaliação boa nasce no pacote bem embalado.',
-];
+export const perfilPessoal = ['Comunicativo', 'Extrovertido', 'Prestativo', 'Facilidade com clientes e equipes'];
