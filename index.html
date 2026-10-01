@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kevin Alves · Marketplace</title>
+  <meta name="description" content="Kevin Alves: vendedor de marketplace com R$ 200 mil faturados no Mercado Livre e estudante de Publicidade e Propaganda.">
+  <meta property="og:title" content="Kevin Alves · Marketplace">
+  <meta property="og:description" content="R$ 200 mil faturados no Mercado Livre. Anúncio, preço, envio e atendimento.">
+  <meta name="theme-color" content="#F3EEE4">
+  <link rel="icon" href="assets/icone.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="topo">
+    <div class="topo__in">
+      <a class="marca" href="#inicio" aria-label="Kevin Alves, início">
+        <span class="marca__selo">KA</span>
+        <span class="marca__nome">Kevin Alves</span>
+      </a>
+      <nav class="menu" aria-label="Seções">
+        <a href="#vitrine">Vitrine</a>
+        <a href="#rastreio">Rastreio</a>
+        <a href="#ficha">Ficha técnica</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <div class="topo__acoes">
+        <button class="icone-btn" id="tema" type="button" aria-label="Alternar tema claro e escuro">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z"/></svg>
+        </button>
+        <a class="carrinho" href="#contato" id="carrinho" aria-label="Carrinho de contato: 0 itens">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2"/><circle cx="10" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/></svg>
+          <span class="carrinho__qtd" id="carrinho-qtd">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <!-- INÍCIO -->
+    <section class="heroi" id="inicio">
+      <div class="heroi__fita" aria-hidden="true"><span>FRÁGIL · CONTÉM IDEIAS · FRÁGIL · CONTÉM IDEIAS · FRÁGIL · CONTÉM IDEIAS · FRÁGIL · CONTÉM IDEIAS ·</span></div>
+      <div class="heroi__in">
+        <div class="heroi__texto">
+          <p class="rotulo"><span class="ponto"></span> Disponível · <span data-campo="cidade"></span></p>
+          <h1 class="heroi__nome">Kevin<br><span>Alves</span></h1>
+          <p class="heroi__frase">Eu faço produto <span class="giro" id="giro" aria-live="polite">vender</span>.</p>
+          <p class="heroi__resumo" data-campo="resumo"></p>
+          <div class="heroi__botoes">
+            <a class="btn btn--cheio" href="#contato">Vamos conversar</a>
+            <a class="btn btn--linha" href="#vitrine">Ver a vitrine ↓</a>
+          </div>
+        </div>
+
+        <aside class="painel" aria-label="Faturamento no Mercado Livre">
+          <div class="painel__topo">
+            <span class="rotulo">Painel do vendedor</span>
+            <span class="painel__plataforma">Mercado Livre</span>
+          </div>
+          <p class="painel__legenda">Faturamento acumulado</p>
+          <p class="painel__valor" id="contador" aria-label="R$ 200.000">R$ 0</p>
+          <div class="trilha" aria-hidden="true">
+            <div class="trilha__barra" id="trilha"></div>
+            <div class="trilha__marcos" id="marcos"></div>
+          </div>
+          <div class="painel__carimbo" id="carimbo" aria-hidden="true">Meta<br>batida</div>
+          <ul class="painel__numeros" id="numeros"></ul>
+        </aside>
+      </div>
+    </section>
+
+    <div class="faixa" aria-hidden="true"><div class="faixa__trilho" id="faixa"></div></div>
+
+    <!-- VITRINE -->
+    <section class="secao" id="vitrine">
+      <div class="secao__cab">
+        <p class="rotulo">01 · Vitrine</p>
+        <h2>O que eu levo para a sua loja</h2>
+        <p class="secao__sub">Escolha o que interessa e coloque no carrinho. No final, o carrinho vira um e-mail pronto para mim.</p>
+      </div>
+      <div class="vitrine" id="lista-servicos"></div>
+    </section>
+
+    <!-- RASTREIO -->
+    <section class="secao secao--escura" id="rastreio">
+      <div class="secao__cab">
+        <p class="rotulo">02 · Rastreio</p>
+        <h2>Onde esta encomenda já passou</h2>
+        <p class="secao__sub">Código de rastreio <code class="codigo">KA2022SP</code> · da triagem de correspondências até o próprio marketplace.</p>
+      </div>
+      <ol class="rastreio" id="lista-rastreio">
+        <li class="rastreio__linha" aria-hidden="true"><span id="rastreio-progresso"></span><i id="caminhao">🚚</i></li>
+      </ol>
+    </section>
+
+    <!-- FICHA + CUPOM -->
+    <section class="secao" id="ficha">
+      <div class="secao__cab">
+        <p class="rotulo">03 · Ficha técnica</p>
+        <h2>Características do produto</h2>
+      </div>
+      <div class="ficha-grade">
+        <table class="ficha">
+          <caption class="visualmente-oculto">Ficha técnica de Kevin Alves</caption>
+          <tbody id="lista-ficha"></tbody>
+        </table>
+        <div class="cupom-caixa">
+          <div class="cupom" id="cupom">
+            <p class="cupom__cab">*** CUPOM NÃO FISCAL ***<br>FORMAÇÃO &amp; CERTIFICADOS</p>
+            <p class="cupom__tracos">----------------------------------------</p>
+            <ol class="cupom__itens" id="lista-cupom"></ol>
+            <p class="cupom__tracos">----------------------------------------</p>
+            <p class="cupom__total"><span>TOTAL</span><span>VONTADE DE APRENDER ∞</span></p>
+            <p class="cupom__obrigado">OBRIGADO PELA VISITA, VOLTE SEMPRE</p>
+            <svg class="cupom__barras" id="barras-cupom" aria-hidden="true"></svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section class="secao" id="contato">
+      <div class="secao__cab">
+        <p class="rotulo">04 · Contato</p>
+        <h2>Finalizar pedido</h2>
+        <p class="secao__sub">A etiqueta já está pronta. É só despachar.</p>
+      </div>
+
+      <article class="etiqueta">
+        <div class="etiqueta__carimbo" aria-hidden="true">Entrega<br>expressa</div>
+        <div class="etiqueta__linha etiqueta__linha--topo">
+          <span class="etiqueta__tipo">PAC · SEDEX · CONVERSA</span>
+          <span class="rotulo">Volume 1/1</span>
+        </div>
+        <div class="etiqueta__blocos">
+          <div class="etiqueta__bloco">
+            <p class="etiqueta__titulo">Destinatário</p>
+            <p class="etiqueta__nome">Kevin Alves</p>
+            <p data-campo="cidade"></p>
+            <p><a class="etiqueta__email" data-campo="email" href="#"></a></p>
+          </div>
+          <div class="etiqueta__bloco">
+            <p class="etiqueta__titulo">Remetente</p>
+            <p class="etiqueta__nome">Você 👋</p>
+            <p>Loja, marca ou empresa com produto para vender</p>
+          </div>
+        </div>
+        <div class="etiqueta__conteudo">
+          <p class="etiqueta__titulo">Conteúdo do pacote</p>
+          <ul class="etiqueta__itens" id="itens-pacote"></ul>
+        </div>
+        <svg class="etiqueta__barras" id="barras-etiqueta" aria-hidden="true"></svg>
+        <p class="etiqueta__codigo">KA 2022 SP 0200 BR</p>
+        <div class="etiqueta__acoes">
+          <a class="btn btn--cheio" id="enviar-email" href="#">Enviar e-mail</a>
+          <a class="btn btn--linha" id="link-linkedin" href="#" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <button class="btn btn--linha" id="copiar" type="button">Copiar e-mail</button>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <p>© <span id="ano"></span> Kevin Alves · São Paulo</p>
+    <p class="rodape__nota">Embalado com cuidado. Nenhum produto foi amassado na construção deste site.</p>
+  </footer>
+
+  <div class="aviso" id="aviso" role="status" aria-live="polite" hidden>
+    <span class="aviso__icone">💡</span>
+    <p class="aviso__texto"><strong>Dica de vendedor</strong><span id="aviso-texto"></span></p>
+    <button class="aviso__fechar" id="aviso-fechar" type="button" aria-label="Fechar dica">×</button>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
