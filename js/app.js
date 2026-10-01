@@ -1,4 +1,4 @@
-import { perfil, numeros, etapas, servicos, simulador, metricas, trajetoria, perfilPessoal } from './dados.js';
+import { perfil, numeros, etapas, servicos, simulador, metricas, trajetoria, perfilPessoal } from './dados.js?v=202610011629';
 
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
