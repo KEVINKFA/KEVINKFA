@@ -1,28 +1,31 @@
 ## Kevin Alves
 
-**Operação e vendas em marketplace** · São Paulo, SP
+**Marketing para marketplace** · São Paulo, SP
 
 Transformo anúncios em vendas, e vendas em clientes que voltam. Vendedor no Mercado Livre com **R$ 200 mil faturados** e estudante de Publicidade e Propaganda na Estácio.
 
 **[Portfólio →](https://kevinkfa.github.io/KEVINKFA/)**
 
-### Atuação
+### Atuação na jornada do cliente
 
 | Etapa | Frente |
 |---|---|
-| Visibilidade | Anúncios e posicionamento · Divulgação e métricas |
-| Conversão | Preço e margem |
-| Entrega | Estoque e expedição · Infraestrutura da operação |
-| Recompra | Atendimento e reputação |
+| Atração | SEO de marketplace · Mídia paga |
+| Consideração | Copywriting de anúncio · Fotografia e direção de arte |
+| Conversão | Ofertas e campanhas |
+| Fidelização | Reputação e prova social |
+
+### Métricas que eu acompanho
+
+CTR · Taxa de conversão · Ticket médio · ACOS · Reputação
 
 ### Trajetória
 
-| Período | Função |
+| Período | |
 |---|---|
 | Atual | Vendedor, Mercado Livre (operação própria) |
-| 2024 – 2025 | Assistente de TI, SUBA |
-| 2022 – 2024 | Mensageiro, Pitney Bowes |
 | 2024 – 2027 | Publicidade e Propaganda, Estácio |
+| 2023 | Fundamentos de Marketing, LinkedIn |
 
 ### Contato
 

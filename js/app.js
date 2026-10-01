@@ -1,4 +1,4 @@
-import { perfil, numeros, etapas, servicos, trajetoria, formacao, perfilPessoal } from './dados.js';
+import { perfil, numeros, etapas, servicos, simulador, metricas, trajetoria, perfilPessoal } from './dados.js';
 
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
@@ -119,37 +119,94 @@ function servicoNoFoco() {
   if (lista.top < innerHeight && lista.bottom > 0) ativarServico(melhor);
 }
 
+/* ---------- Funil ---------- */
+const brl = (v) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
+const inteiro = (v) => Math.round(v).toLocaleString('pt-BR');
+const pct = (v) => `${v.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}%`;
+const campos = { visitas: $('#campo-visitas'), conversao: $('#campo-conversao'), ticket: $('#campo-ticket') };
+for (const [k, c] of Object.entries(campos)) {
+  const cfg = simulador[k];
+  Object.assign(c, { min: cfg.min, max: cfg.max, step: cfg.passo });
+  c.value = cfg.valor;
+  c.addEventListener('input', calcular);
+}
+
+const ativas = new Set();
+$('#alavancas').innerHTML = simulador.alavancas.map((a, i) => `
+  <button type="button" class="alavanca" data-i="${i}" aria-pressed="false"><span class="alavanca__marca" aria-hidden="true"></span><strong>${esc(a.rotulo)}</strong><span>${esc(a.origem)}</span></button>`).join('');
+$('#alavancas').addEventListener('click', (e) => {
+  const b = e.target.closest('.alavanca');
+  if (!b) return;
+  const i = Number(b.dataset.i);
+  ativas.has(i) ? ativas.delete(i) : ativas.add(i);
+  b.setAttribute('aria-pressed', ativas.has(i));
+  calcular();
+});
+
+function resultado(comAlavancas) {
+  const v = { visitas: +campos.visitas.value, conversao: +campos.conversao.value, ticket: +campos.ticket.value };
+  if (comAlavancas) {
+    simulador.alavancas.forEach((a, i) => {
+      if (!ativas.has(i)) return;
+      if (a.fator) v[a.campo] *= a.fator;
+      if (a.soma) v[a.campo] += a.soma;
+    });
+  }
+  const pedidos = (v.visitas * v.conversao) / 100;
+  return { ...v, pedidos, faturamento: pedidos * v.ticket };
+}
+
+function calcular() {
+  const base = resultado(false), r = resultado(true);
+  for (const [k, c] of Object.entries(campos)) {
+    const cfg = simulador[k];
+    c.style.setProperty('--p', (base[k] - cfg.min) / (cfg.max - cfg.min));
+  }
+  $('#saida-visitas').textContent = inteiro(base.visitas);
+  $('#saida-conversao').textContent = pct(base.conversao);
+  $('#saida-ticket').textContent = brl(base.ticket);
+  $('#funil-visitas').textContent = inteiro(r.visitas);
+  $('#funil-pedidos').textContent = inteiro(r.pedidos);
+  $('#funil-faturamento').textContent = brl(r.faturamento);
+  // Cada barra mostra o quanto aquela etapa está perto do máximo do simulador
+  const maxVisitas = simulador.visitas.max * 1.2;
+  const maxPedidos = (maxVisitas * (simulador.conversao.max + 0.5)) / 100;
+  $('#barra-visitas').style.width = `${(r.visitas / maxVisitas) * 100}%`;
+  $('#barra-pedidos').style.width = `${Math.max(1, (r.pedidos / maxPedidos) * 100)}%`;
+  const ganho = r.faturamento - base.faturamento;
+  const delta = $('#funil-delta');
+  delta.classList.toggle('positivo', ganho > 0);
+  delta.textContent = ganho > 0
+    ? `+${brl(ganho)} por mês (+${Math.round((ganho / base.faturamento) * 100)}%) com as alavancas`
+    : 'Ative uma alavanca para ver o impacto.';
+}
+calcular();
+
+$('#lista-metricas').innerHTML = metricas.map((m) => `
+  <div class="metrica-item revela">
+    <dt><span class="metrica-item__sigla">${esc(m.sigla)}</span>${esc(m.nome)}</dt>
+    <dd><code>${esc(m.formula)}</code>${esc(m.texto)}</dd>
+  </div>`).join('');
+
 /* ---------- Trajetória ---------- */
 $('#lista-trajetoria').innerHTML = trajetoria.map((c, i) => `
   <li class="cargo revela${i === 0 ? ' atual' : ''}">
     <p class="cargo__periodo">${esc(c.periodo)}</p>
     <div>
       <h3>${esc(c.titulo)}</h3>
-      <p class="cargo__empresa">${esc(c.empresa)}</p>
+      <p class="cargo__empresa">${esc(c.origem)}</p>
       <p class="cargo__texto">${esc(c.texto)}</p>
-      ${c.itens ? `<ul class="cargo__itens" id="itens-${i}">${c.itens.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}
+      ${c.curso ? `<div class="curso__barra" aria-hidden="true"><span id="curso-progresso"></span></div>
+        <p class="curso__periodo"><span>${c.curso.inicio}</span><span id="curso-pct"></span><span>${c.curso.fim}</span></p>` : ''}
     </div>
-    ${c.itens
-      ? `<button class="cargo__abrir" type="button" aria-expanded="false" aria-controls="itens-${i}">Atividades <i aria-hidden="true">+</i></button>`
-      : `<span class="cargo__selo"><i class="ponto"></i>Em andamento</span>`}
+    ${c.selo ? `<span class="cargo__selo"><i class="ponto"></i>${esc(c.selo)}</span>` : '<span></span>'}
   </li>`).join('');
-$('#lista-trajetoria').addEventListener('click', (e) => {
-  const b = e.target.closest('.cargo__abrir');
-  if (!b) return;
-  const aberto = b.closest('.cargo').classList.toggle('aberto');
-  b.setAttribute('aria-expanded', aberto);
-});
-
-/* ---------- Formação ---------- */
-$('#curso-situacao').textContent = `Graduação · ${formacao.situacao}`;
-$('#curso-nome').textContent = formacao.curso;
-$('#curso-inst').textContent = formacao.instituicao;
-const [inicio, fim] = formacao.periodo.split('—').map((t) => Number(t.trim()));
-$('#curso-periodo').innerHTML = `<span>${inicio}</span><span>${fim}</span>`;
-const progresso = Math.min(1, Math.max(0, (Date.now() - new Date(inicio, 1, 1)) / (new Date(fim, 11, 31) - new Date(inicio, 1, 1))));
 $('#perfil-pessoal').innerHTML = perfilPessoal.map((t) => `<li>${esc(t)}</li>`).join('');
-$('#lista-certificados').innerHTML = formacao.certificados.map((c) => `
-  <li class="revela"><strong>${esc(c.nome)}</strong><span class="origem">${esc(c.origem)}</span><span class="ano">${esc(c.ano)}</span></li>`).join('');
+const curso = trajetoria.find((c) => c.curso)?.curso;
+const progresso = curso
+  ? Math.min(1, Math.max(0, (Date.now() - new Date(curso.inicio, 1, 1)) / (new Date(curso.fim, 11, 31) - new Date(curso.inicio, 1, 1))))
+  : 0;
+if (curso) $('#curso-pct').textContent = `${Math.round(progresso * 100)}% concluído`;
 
 /* ---------- Copiar e-mail ---------- */
 const aviso = $('#aviso');
@@ -178,7 +235,7 @@ function aoRolar() {
     odometroGirou = true;
     setTimeout(girarOdometro, semMovimento ? 0 : 350);
   }
-  if (!cursoAnimou && $('.curso__barra').getBoundingClientRect().top < innerHeight * 0.9) {
+  if (!cursoAnimou && curso && $('.curso__barra').getBoundingClientRect().top < innerHeight * 0.9) {
     cursoAnimou = true;
     $('#curso-progresso').style.width = `${progresso * 100}%`;
   }

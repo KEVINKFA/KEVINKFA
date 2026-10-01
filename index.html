@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Kevin Alves · Marketplace</title>
-  <meta name="description" content="Kevin Alves: operação e vendas em marketplace, com R$ 200 mil faturados no Mercado Livre. Estudante de Publicidade e Propaganda.">
+  <meta name="description" content="Kevin Alves: marketing para marketplace, com R$ 200 mil faturados no Mercado Livre. Estudante de Publicidade e Propaganda.">
   <meta property="og:title" content="Kevin Alves · Marketplace">
   <meta property="og:url" content="https://kevinkfa.github.io/KEVINKFA/">
-  <meta property="og:description" content="R$ 200 mil faturados no Mercado Livre. Anúncios, preço, expedição e atendimento.">
+  <meta property="og:description" content="R$ 200 mil faturados no Mercado Livre. SEO, mídia paga, copy, ofertas e reputação.">
   <meta name="theme-color" content="#F5F4EF">
   <link rel="icon" href="assets/icone.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,8 +23,8 @@
       <a class="marca" href="#inicio">Kevin Alves</a>
       <nav class="menu" aria-label="Seções">
         <a href="#atuacao">Atuação</a>
+        <a href="#funil">Funil</a>
         <a href="#trajetoria">Trajetória</a>
-        <a href="#formacao">Formação</a>
       </nav>
       <button class="tema" id="tema" type="button" aria-label="Alternar tema claro e escuro">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16Z"/></svg>
@@ -69,12 +69,12 @@
       <header class="secao__cab">
         <span class="secao__num">01</span>
         <h2>Atuação</h2>
-        <p class="secao__sub">Seis frentes que cobrem o ciclo inteiro de uma venda em marketplace.</p>
+        <p class="secao__sub">Seis frentes de marketing que cobrem a jornada do cliente, da busca à recompra.</p>
       </header>
 
       <div class="atuacao">
         <div class="ciclo-caixa">
-          <figure class="ciclo" aria-label="Ciclo da venda">
+          <figure class="ciclo" aria-label="Jornada do cliente">
             <svg viewBox="0 0 320 320" id="ciclo-svg" aria-hidden="true">
               <circle class="ciclo__trilho" cx="160" cy="160" r="120"/>
               <circle class="ciclo__arco" id="ciclo-arco" cx="160" cy="160" r="120"/>
@@ -93,38 +93,63 @@
       </div>
     </section>
 
-    <!-- 02 Trajetória -->
-    <section class="secao" id="trajetoria">
+    <!-- 02 Funil -->
+    <section class="secao" id="funil">
       <header class="secao__cab">
         <span class="secao__num">02</span>
-        <h2>Trajetória</h2>
-        <p class="secao__sub">Logística, tecnologia e comunicação: cada etapa somou uma peça da operação.</p>
+        <h2>Funil</h2>
+        <p class="secao__sub">Faturamento é visitas × conversão × ticket médio. Cada frente de marketing mexe em uma dessas alavancas. Ajuste os números e veja o efeito.</p>
       </header>
-      <ol class="trajetoria" id="lista-trajetoria"></ol>
+
+      <div class="simulador">
+        <div class="simulador__controles">
+          <label class="controle">
+            <span class="controle__topo"><span>Visitas por mês</span><output id="saida-visitas"></output></span>
+            <input type="range" id="campo-visitas">
+          </label>
+          <label class="controle">
+            <span class="controle__topo"><span>Taxa de conversão</span><output id="saida-conversao"></output></span>
+            <input type="range" id="campo-conversao">
+          </label>
+          <label class="controle">
+            <span class="controle__topo"><span>Ticket médio</span><output id="saida-ticket"></output></span>
+            <input type="range" id="campo-ticket">
+          </label>
+          <div class="alavancas">
+            <p class="rotulo">Aplicar alavancas de marketing</p>
+            <div class="alavancas__lista" id="alavancas"></div>
+          </div>
+        </div>
+
+        <div class="funil">
+          <div class="funil__etapa"><span class="funil__rotulo">Visitas</span><strong id="funil-visitas"></strong><span class="funil__trilho"><span class="funil__barra" id="barra-visitas"></span></span></div>
+          <div class="funil__etapa"><span class="funil__rotulo">Pedidos</span><strong id="funil-pedidos"></strong><span class="funil__trilho"><span class="funil__barra" id="barra-pedidos"></span></span></div>
+          <div class="funil__resultado" aria-live="polite">
+            <span class="rotulo">Faturamento estimado por mês</span>
+            <strong id="funil-faturamento"></strong>
+            <span class="funil__delta" id="funil-delta"></span>
+          </div>
+          <p class="funil__nota">Simulador ilustrativo. Os números não são de nenhuma loja real.</p>
+        </div>
+      </div>
+
+      <div class="metricas">
+        <p class="rotulo">Métricas que eu acompanho</p>
+        <dl id="lista-metricas"></dl>
+      </div>
     </section>
 
-    <!-- 03 Formação -->
-    <section class="secao" id="formacao">
+    <!-- 03 Trajetória -->
+    <section class="secao" id="trajetoria">
       <header class="secao__cab">
         <span class="secao__num">03</span>
-        <h2>Formação</h2>
+        <h2>Trajetória</h2>
+        <p class="secao__sub">Prática de mercado e base acadêmica em comunicação, andando juntas.</p>
       </header>
-      <div class="formacao">
-        <article class="curso">
-          <p class="rotulo" id="curso-situacao"></p>
-          <h3 id="curso-nome"></h3>
-          <p class="curso__inst" id="curso-inst"></p>
-          <div class="curso__barra" aria-hidden="true"><span id="curso-progresso"></span></div>
-          <p class="curso__periodo" id="curso-periodo"></p>
-          <div class="perfil">
-            <p class="rotulo">Perfil</p>
-            <ul id="perfil-pessoal"></ul>
-          </div>
-        </article>
-        <div class="certificados">
-          <p class="rotulo">Certificações</p>
-          <ul id="lista-certificados"></ul>
-        </div>
+      <ol class="trajetoria" id="lista-trajetoria"></ol>
+      <div class="perfil">
+        <p class="rotulo">Perfil</p>
+        <ul id="perfil-pessoal"></ul>
       </div>
     </section>
 
@@ -132,7 +157,7 @@
     <section class="contato" id="contato">
       <div class="contato__in">
         <p class="rotulo">Contato</p>
-        <h2 class="contato__titulo">Vamos conversar sobre a <em>sua operação.</em></h2>
+        <h2 class="contato__titulo">Vamos fazer a sua loja <em>vender mais.</em></h2>
         <a class="contato__email" data-link="email"></a>
         <div class="contato__acoes">
           <button class="btn btn--claro" id="copiar" type="button">Copiar e-mail</button>
