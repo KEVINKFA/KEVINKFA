@@ -1,28 +1,29 @@
-# Kevin Alves · Marketplace
+# Oi, eu sou o Kevin Alves 👋
 
-Portfólio de Kevin Alves: vendedor de marketplace com **R$ 200 mil faturados no Mercado Livre** e estudante de Publicidade e Propaganda.
+Vendedor de marketplace com **R$ 200 mil faturados no Mercado Livre** e estudante de Publicidade e Propaganda na Estácio.
 
-O site conta a carreira como uma encomenda: painel de faturamento, vitrine de serviços com carrinho que vira e-mail, rastreio da carreira, ficha técnica, cupom de formação e etiqueta de envio para contato.
+Junto anúncio que convence, operação que não trava e atendimento que vira avaliação positiva.
 
-## Editar
+### 📦 [Veja o portfólio completo](https://kevinkfa.github.io/KEVINKFA/)
 
-Todo o conteúdo (textos, serviços, carreira, certificados e dicas) fica em [`js/dados.js`](js/dados.js). O resto do site lê dali.
+| | |
+|---|---|
+| 📸 **Anúncios que vendem** | título, fotos e descrição tratados como peça publicitária |
+| 💰 **Preço e margem** | tarifa, frete e imposto na conta antes de baixar o preço |
+| 📦 **Estoque e envio** | dois anos de logística na Pitney Bowes |
+| 💬 **Atendimento e pós-venda** | resposta rápida e reputação no verde |
+| 🛠️ **Operação sem travar** | bagagem de suporte de TI |
 
-## Ver no computador
+### Trajetória
 
-```bash
-node tools/servidor.mjs
-```
+- **Hoje**: vendedor no Mercado Livre
+- **2024 – 2027**: Publicidade e Propaganda, Estácio
+- **2024 – 2025**: Assistente de TI, SUBA
+- **2022 – 2024**: Mensageiro, Pitney Bowes
 
-Abra http://localhost:5320.
+### Contato
 
-## Publicar no GitHub Pages
+[![E-mail](https://img.shields.io/badge/E--mail-kevinalves180801%40gmail.com-FF5B1F?style=flat-square&logo=gmail&logoColor=white)](mailto:kevinalves180801@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Kevin%20Alves-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/kevin-alves-a61907234/)
 
-1. Suba esta pasta para um repositório público.
-2. Em **Settings → Pages**, escolha a branch `main` e a pasta raiz (`/`).
-3. O site fica em `https://<usuario>.github.io/<repositorio>/`.
-
-## Contato
-
-- E-mail: kevinalves180801@gmail.com
-- LinkedIn: [Kevin Alves](https://www.linkedin.com/in/kevin-alves-a61907234/)
+<sub>O site fica nesta mesma pasta (index.html, css/ e js/). Os textos estão em js/dados.js.</sub>
